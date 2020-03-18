@@ -113,40 +113,50 @@ const data = [
 
 */
 
-const Articles = (title, date, firstParagraph, secondParagraph, thirdParagraph)
+const articles = document.querySelector('.articles')
 
-// elements
-const article = document.createElement('div')
-const title = document.createElement('h2')
-const date = document.createElement('date')
-const firstPara = document.createElement('firstParagraph')
-const secPara = document.createElement('secondParagraph')
-const thirdPara = document.createElement('thirdParagraph')
-const button = document.createElement('span')
+function makeArticles(articleData) {
 
-// add structure
-article.appendChild(title)
-article.appendChild(date)
-article.appendChild(firstPara)
-article.appendChild(secPara)
-article.appendChild(thirdPara)
-article.appendChild(button)
+  // elements
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('date')
+  const firstPara = document.createElement('firstParagraph')
+  const secPara = document.createElement('secondParagraph')
+  const thirdPara = document.createElement('thirdParagraph')
+  const button = document.createElement('span')
 
-// add styles
-article.classList.add('article')
-date.classList.add('date')
-button.classList.add('button')
+  // add structure
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(firstPara)
+  article.appendChild(secPara)
+  article.appendChild(thirdPara)
+  article.appendChild(button)
 
-// add content
-title.textContent = articleData.title
-date.textContent = articleData.date
-firstPara.textContent = articleData.firstParagraph
-secPara.textContent = articleData.secondParagraph
-thirdPara.textContent = articleData.thirdParagraph
-button.textContent = '\u25C9'
+  // add styles
+  article.classList.add('article')
+  date.classList.add('date')
+  button.classList.add('button')
+
+  // add content
+  title.textContent = articleData.title
+  date.textContent = articleData.date
+  firstPara.textContent = articleData.firstParagraph
+  secPara.textContent = articleData.secondParagraph
+  thirdPara.textContent = articleData.thirdParagraph
+  button.textContent = '\u25C9'
+
+  // event listeners
+  button.addEventListener('click', () => {
+    articles.classList.toggle('article-open')
+  })
 
 
+  return articles
+}
 
-
-return Articles
+data.forEach(datam => {
+  articles.appendChild(makeArticles(datam))
+})
 
