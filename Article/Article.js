@@ -137,6 +137,13 @@ article.classList.add('article')
 date.classList.add('date')
 button.classList.add('button')
 
+// add content
+title.textContent = articleData.title
+date.textContent = articleData.date
+firstPara.textContent = articleData.firstParagraph
+secPara.textContent = articleData.secondParagraph
+thirdPara.textContent = articleData.thirdParagraph
+button.textContent = '\u25C9'
 
 
 
