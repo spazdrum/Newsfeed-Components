@@ -124,6 +124,14 @@ const secPara = document.createElement('secondParagraph')
 const thirdPara = document.createElement('thirdParagraph')
 const button = document.createElement('span')
 
+// add structure
+article.appendChild(title)
+article.appendChild(date)
+article.appendChild(firstPara)
+article.appendChild(secPara)
+article.appendChild(thirdPara)
+article.appendChild(button)
+
 
 
 
