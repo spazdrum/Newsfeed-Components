@@ -153,7 +153,7 @@ function makeArticles(articleData) {
   })
 
 
-  return articles
+  return article
 }
 
 data.forEach(datam => {
