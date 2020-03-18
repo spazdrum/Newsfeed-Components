@@ -132,6 +132,10 @@ article.appendChild(secPara)
 article.appendChild(thirdPara)
 article.appendChild(button)
 
+// add styles
+article.classList.add('article')
+date.classList.add('date')
+button.classList.add('button')
 
 
 
