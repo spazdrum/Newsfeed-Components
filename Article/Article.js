@@ -112,3 +112,63 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function newArticle(element) {
+
+  // elements
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const firPara = document.createElement('p')
+  const secPara = document.createElement('p')
+  const thiPara = document.createElement('p')
+  const btnOpen = document.createElement('span')
+  const btnClose = document.createElement('span')
+
+article.appendChild(title)
+article.appendChild(date)
+article.appendChild(firPara)
+article.appendChild(secPara)
+article.appendChild(thiPara)
+article.appendChild(btnOpen)
+article.appendChild(btnClose)
+
+
+  // classes
+  article.classList.add('article')
+  date.classList.add('date')
+  btnOpen.classList.add('expandButton')
+  btnClose.classList.add('expandButton', 'hide-btn')
+
+  title.textContent = element.title
+  date.textContent = element.date
+  firPara.textContent = element.firstParagraph
+  secPara.textContent = element.secondParagraph
+  thiPara.textContent = element.thirdParagraph
+
+  // event Listener
+  const open = '\u25bc'
+  btnOpen.textContent = open
+
+  const close = '\u25b2'
+  btnClose.textContent = close
+
+  btnOpen.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+    btnOpen.classList.toggle('hide-btn')
+    btnClose.classList.toggle('hide-btn')
+  })
+
+  btnClose.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+    btnOpen.classList.toggle('hide-btn')
+    btnClose.classList.toggle('hide-btn')
+  })
+
+  return article
+}
+
+data.forEach(el => {
+  let thisArticle = newArticle(el)
+  document.querySelector(".articles").appendChild(thisArticle)
+})
