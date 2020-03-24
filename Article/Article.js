@@ -113,50 +113,41 @@ const data = [
 
 */
 
-const articles = document.querySelector('.articles')
-
-function makeArticles(articleData) {
+function newArticle(element) {
 
   // elements
   const article = document.createElement('div')
   const title = document.createElement('h2')
-  const date = document.createElement('date')
-  const firstPara = document.createElement('firstParagraph')
-  const secPara = document.createElement('secondParagraph')
-  const thirdPara = document.createElement('thirdParagraph')
-  const button = document.createElement('span')
+  const date = document.createElement('p')
+  const firPara = document.createElement('p')
+  const secPara = document.createElement('p')
+  const thiPara = document.createElement('p')
+  const expandButton = document.createElement('span')
 
-  // add structure
-  article.appendChild(title)
-  article.appendChild(date)
-  article.appendChild(firstPara)
-  article.appendChild(secPara)
-  article.appendChild(thirdPara)
-  article.appendChild(button)
+  // structure
+  article.append(title, date, firPara, secPara, thiPara, expandButton)
 
-  // add styles
-  article.classList.add('article')
-  date.classList.add('date')
-  button.classList.add('button')
+  // classes
+  article.classList.add("article", "article-open")
+  date.classList.add("date")
+  expandButton.classList.add("expandButton")
 
-  // add content
-  title.textContent = articleData.title
-  date.textContent = articleData.date
-  firstPara.textContent = articleData.firstParagraph
-  secPara.textContent = articleData.secondParagraph
-  thirdPara.textContent = articleData.thirdParagraph
-  button.textContent = '\u25C9'
+  title.textContent = element.title
+  date.textContent = element.date
+  firPara.textContent = element.firstParagraph
+  secPara.textContent = element.secondParagraph
+  thiPara.textContent = element.thirdParagraph
+  expandButton.textContent = element.expandButton
 
-  // event listeners
-  button.addEventListener('click', () => {
-    articles.classList.toggle('article-open')
+  // event Listener
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle("article-open")
   })
-
 
   return article
 }
 
-data.forEach(datam => {
-  articles.appendChild(makeArticles(datam))
+data.forEach(el => {
+  let thisArticle = newArticle(el)
+  document.querySelector(".articles").appendChild(thisArticle)
 })
-
