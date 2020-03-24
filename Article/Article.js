@@ -122,26 +122,47 @@ function newArticle(element) {
   const firPara = document.createElement('p')
   const secPara = document.createElement('p')
   const thiPara = document.createElement('p')
-  const expandButton = document.createElement('span')
+  const btnOpen = document.createElement('span')
+  const btnClose = document.createElement('span')
 
-  // structure
-  article.append(title, date, firPara, secPara, thiPara, expandButton)
+article.appendChild(title)
+article.appendChild(date)
+article.appendChild(firPara)
+article.appendChild(secPara)
+article.appendChild(thiPara)
+article.appendChild(btnOpen)
+article.appendChild(btnClose)
+
 
   // classes
-  article.classList.add("article", "article-open")
-  date.classList.add("date")
-  expandButton.classList.add("expandButton")
+  article.classList.add('article')
+  date.classList.add('date')
+  btnOpen.classList.add('expandButton')
+  btnClose.classList.add('expandButton', 'hide-btn')
 
   title.textContent = element.title
   date.textContent = element.date
   firPara.textContent = element.firstParagraph
   secPara.textContent = element.secondParagraph
   thiPara.textContent = element.thirdParagraph
-  expandButton.textContent = element.expandButton
 
   // event Listener
-  expandButton.addEventListener('click', () => {
-    article.classList.toggle("article-open")
+  const open = '\u25bc'
+  btnOpen.textContent = open
+
+  const close = '\u25b2'
+  btnClose.textContent = close
+
+  btnOpen.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+    btnOpen.classList.toggle('hide-btn')
+    btnClose.classList.toggle('hide-btn')
+  })
+
+  btnClose.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+    btnOpen.classList.toggle('hide-btn')
+    btnClose.classList.toggle('hide-btn')
   })
 
   return article
